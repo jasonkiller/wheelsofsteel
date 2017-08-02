@@ -15,8 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', 'HomeController@home');
+Auth::routes();
 
+Route::get('/home', 'HomeController@index');
 
 /*=============== Login Routes Start ===============*/
 
@@ -43,6 +44,4 @@ Route::post('/replyOrder', 'OrderController@replyOrder');
 
 /*=============== Order Routes End ===============*/
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index');
