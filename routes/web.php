@@ -42,3 +42,7 @@ Route::post('/updateOrder', 'OrderController@updateOrder');
 Route::post('/replyOrder', 'OrderController@replyOrder');
 
 /*=============== Order Routes End ===============*/
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

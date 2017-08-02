@@ -2,16 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Mews\Captcha\Facades\Captcha;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    // home页面
-    public function home()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        // 生成一个验证码链接
-        $src = Captcha::src();
-        return view('home', ['src' => $src]);
+        $this->middleware('auth');
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
+    }
 }

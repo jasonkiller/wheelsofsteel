@@ -1,32 +1,17 @@
-@extends('layout.main')
-
-@section('css')
-    @parent
-
-@endsection
-
+@extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Dashboard</div>
 
-    <form action="/login" method="post">
-        <img src="{{$src}}" alt="">
-        <input type="text" name="captcha">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="submit">
-    </form>
-    this is the main content
-
-
-
-
-
-
-
-
-@endsection
-
-
-@section('js')
-    @parent
-
+                <div class="panel-body">
+                    You are logged in!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
