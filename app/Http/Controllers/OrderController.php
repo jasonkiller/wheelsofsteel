@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Model\Order;
 use Illuminate\Http\Request;
+use app\Common\JsonResponse;
+use Validator;
 
 class OrderController extends Controller
 {
@@ -27,8 +29,39 @@ class OrderController extends Controller
      */
     public function createOrder(Request $request)
     {
-        $data = $request->input('data');
-        Order::addOrder($data);
+        $data['start'] = $request->input('start');
+        $data['end'] = $request->input('end') ? $request->input('end') : '';
+        $data['descripton'] = $request->input('descripton') ? $request->input('descripton') : '';
+        $data['username'] = $request->input('username') ? $request->input('username') : '';
+        $data['tel'] = $request->input('tel') ? $request->input('tel') : '';
+        $data['date'] = $request->input('date') ? $request->input('date') : '';
+
+        $rules = [
+            'start' => 'required',
+            'end' => 'required',
+            'description' => 'required',
+            'username' => 'required',
+            'tel' => 'required',
+            'data' => 'required',
+        ];
+
+        $message = [
+            'start.requierd' => '请选择开始时间',
+            'end.required' => '请选择结束时间',
+            'username.required' => '请选择用户',
+            'tel.required' => '请填写电话号码',
+        ];
+
+        $validator = Validator::make($rules, $message, $data);
+        dd($validator->passes());
+
+        if ($validator->passes()) {
+            Order::addOrder($data);
+            return JsonResponse::success();
+        } else {
+            return JsonResponse::error($validator->errors()->first());
+        }
+
     }
 
     /**
