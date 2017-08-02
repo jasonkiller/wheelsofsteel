@@ -16,4 +16,5 @@ return [
     'Register' => 'Register',
     'name' => 'Name',
     'confirmpass' => 'Confirm Password',
+    'userinfo' => 'Profile'
 ];

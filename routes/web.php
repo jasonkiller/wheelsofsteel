@@ -19,9 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/userList', 'HomeController@userList');
+
+
+
+
 /*=============== Login Routes Start ===============*/
 
-Route::post('/login', 'LoginController@login');
+//Route::post('/login', 'LoginController@login');
 
 /*=============== Login Routes End ===============*/
 

@@ -16,4 +16,5 @@ return [
     'Register' => '注册',
     'name' => '昵称',
     'confirmpass' => '确认密码',
+    'userinfo' => '个人信息'
 ];

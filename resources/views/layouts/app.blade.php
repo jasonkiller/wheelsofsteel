@@ -60,8 +60,19 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('/logout') }}"
+                                        <a href="{{ url('/userinfo') }}"
                                             onclick="event.preventDefault();
+                                                     document.getElementById('userinfo-form').submit();">
+                                            {{ trans('login.userinfo') }}
+                                        </a>
+
+                                        <form id="userinfo-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/logout') }}"
+                                           onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             {{ trans('login.Logout') }}
                                         </a>
